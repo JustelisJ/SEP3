@@ -1,0 +1,35 @@
+﻿@using System.Net.Http;
+@using CustomerClient.Data;
+@inject HttpClient client;
+
+<h3>Post</h3>
+
+<input @bind="newCustomer" placeholder="New Customer"/>
+<button @onclick="@AddCustomer">Add</button>
+
+@code {
+
+    private string newCustomer;
+
+    private async Task AddCustomer()
+    {
+        var addCustomer = new Customer
+        {
+            FirstName = newCustomer,
+            LastName = "Johnson",
+            IDNO = "790",
+            IDNONr = "790",
+            IdReleaseDate = DateTime.Today,
+            City = "Aarhus",
+            Area = 7,
+            Address = "Bytorv",
+            AddressNr = 5,
+            PhoneNr = "72900119",
+            StartingDate = DateTime.Today,
+            type = "Company"
+        };
+
+        await client.PostAsJsonAsync("api/Customers", addCustomer);
+    }
+
+}

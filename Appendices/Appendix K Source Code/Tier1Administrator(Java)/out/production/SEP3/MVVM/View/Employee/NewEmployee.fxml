@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVVM.View.Employee.NewEmployee">
+   <children>
+      <TextField fx:id="name" layoutX="112.0" layoutY="31.0" />
+      <Label layoutX="48.0" layoutY="35.0" text="First Name" />
+      <Label layoutX="310.0" layoutY="166.0" text="Phone Number" />
+      <Label layoutX="334.0" layoutY="35.0" text="IDNO" />
+      <Label layoutX="59.0" layoutY="99.0" text="Birthday" />
+      <Label layoutX="49.0" layoutY="67.0" text="Last Name" />
+      <Label layoutX="25.0" layoutY="132.0" text="Address Streets" />
+      <TextField fx:id="surename" layoutX="112.0" layoutY="63.0" />
+      <TextField fx:id="id" layoutX="400.0" layoutY="31.0" />
+      <TextField fx:id="address" layoutX="112.0" layoutY="128.0" />
+      <TextField fx:id="phone" layoutX="401.0" layoutY="162.0" />
+      <RadioButton fx:id="cashir" layoutX="200.0" layoutY="279.0" mnemonicParsing="false" text="Cashier" />
+      <RadioButton fx:id="administratot" layoutX="46.0" layoutY="279.0" mnemonicParsing="false" text="Administrator" />
+      <RadioButton fx:id="driver" layoutX="350.0" layoutY="279.0" mnemonicParsing="false" text="Driver" />
+      <RadioButton fx:id="accountant" layoutX="467.0" layoutY="279.0" mnemonicParsing="false" text="Accountant" />
+      <Button layoutX="221.0" layoutY="337.0" mnemonicParsing="false" text="Add new Employee" />
+      <TextField fx:id="addressNr" layoutX="112.0" layoutY="162.0" />
+      <TextField fx:id="block" layoutX="112.0" layoutY="196.0" />
+      <TextField fx:id="appartmentNr" layoutX="112.0" layoutY="232.0" />
+      <TextField fx:id="idNr" layoutX="400.0" layoutY="63.0" />
+      <DatePicker fx:id="idRelease" layoutX="400.0" layoutY="95.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="birthday" layoutX="113.0" layoutY="95.0" prefHeight="25.0" prefWidth="149.0" />
+      <RadioButton fx:id="female" layoutX="499.0" layoutY="132.0" mnemonicParsing="false" text="Female" />
+      <RadioButton fx:id="male" layoutX="388.0" layoutY="132.0" mnemonicParsing="false" text="Male" />
+      <PasswordField fx:id="password" layoutX="400.0" layoutY="196.0" />
+      <PasswordField fx:id="confirmPassword" layoutX="400.0" layoutY="232.0" />
+      <Label layoutX="44.0" layoutY="166.0" text="Address Nr. " />
+      <Label layoutX="79.0" layoutY="200.0" text="Block" />
+      <Label layoutX="25.0" layoutY="236.0" text="Appartment Nr." />
+      <Label layoutX="336.0" layoutY="67.0" text="IDNO Nr." />
+      <Label layoutX="291.0" layoutY="99.0" text="IDNO release date" />
+      <Label layoutX="310.0" layoutY="200.0" text="Enter password" />
+      <Label layoutX="292.0" layoutY="236.0" text="Confirm password" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,47 @@
+﻿@page "/show"
+
+@using System.Net.Http;
+@using CustomerClient.Data;
+@using System.Threading.Tasks;
+@inject HttpClient client;
+
+<h3>Login</h3>
+
+<ul>
+</ul>
+
+@code {
+    private Customer[] customers;
+    private string newCustomer;
+
+    protected override async Task OnInitializedAsync() =>
+        customers = await client.GetJsonAsync<Customer[]>("https://localhost:5003/api/Customers");
+
+    private Customer _editCustomer = new Customer();
+
+    private void EditCustomer(int id)
+    {
+        var editCustomer = customers.Single(i => i.Id == id);
+        _editCustomer = new Customer
+        {
+            Id = editCustomer.Id,
+            FirstName = editCustomer.FirstName,
+            LastName = "Johnson",
+            IDNO = "790",
+            IDNONr = "790",
+            IdReleaseDate = DateTime.Today,
+            City = "Aarhus",
+            Area = 7,
+            Address = "Bytorv",
+            AddressNr = 5,
+            PhoneNr = "72900119",
+            StartingDate = DateTime.Today,
+            type = "Company"
+        };
+    }
+
+    private async Task SaveCustomer() =>
+            await client.PutJsonAsync($"https://localhost:5003/api/Customers/{_editCustomer.Id}", _editCustomer);
+
+
+}

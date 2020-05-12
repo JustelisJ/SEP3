@@ -1,0 +1,70 @@
+﻿@page "/user-info"
+
+@using CustomerClient.Data;
+
+<h3>User Info</h3>
+
+<p>Gets all of the customers</p>
+
+<table class="table">
+
+    <thead>
+
+        <tr>
+
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Adress</th>
+            <th>Type</th>
+            <th>Delete</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+         @foreach (Customer customer in customers)
+         {
+        <tr>
+
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.Address</td>
+            <td>@customer.type</td>
+            <td><button @onclick="@(e => deleteCustomer(customer.Id))" >Delete</button></td>
+            @{ 
+                count++;
+            }
+        </tr>
+         }
+
+    </tbody>
+
+</table>
+
+@code {
+    int count = 0;
+    ClientTier1 client = new ClientTier1();
+
+    //var customers = ClientTier1.GetCustomers(); 
+
+    List<Customer> customers;
+
+    protected override async Task OnInitializedAsync() => customers = await client.GetCustomers();
+
+    private async void deleteCustomer(int id)
+    {
+        customers.Remove(customers.Find(x => x.Id.Equals(id)));
+        await client.DeleteCustomerAsync(id);
+    }
+
+    private async Task<Customer> findCustomer(int id)
+    {
+        Customer customer = await client.GetCustomerAsync(id);
+        return customer;
+    }
+
+
+
+}

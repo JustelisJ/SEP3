@@ -1,0 +1,51 @@
+﻿@page "/horsens"
+@inject SClient ss
+@using Newtonsoft.Json
+@using Data
+@inject LoggedIn login
+@inject NavigationManager NavigationManager
+@inject SClient client
+
+@if (login.loggedIn)
+{
+    <h1>Horsens</h1>
+    if (customers.Count == 0)
+    {
+        <p>There are no customers in Horsens at this moment</p>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <td><b>FirstName</b></td>
+                <td><b>LastName</b></td>
+                <td><b>HomeOwner/Company</b></td>
+            </tr>
+            @foreach (Customer c in customers)
+            {
+                <tr>
+                    <td>@c.FirstName</td>
+                    <td>@c.LastName</td>
+                    <td>@c.type</td>
+                </tr>
+            }
+        </table>
+    }
+}
+else
+{
+    NavigationManager.NavigateTo("/login");
+}
+
+@code {
+    private List<Customer> customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Request request = new Request { requestType = "GET", requestInformation = "city", requestContent = "Horsens" };
+        string json = JsonConvert.SerializeObject(request);
+        client.Send(json);
+        string response = client.Recive();
+        customers = JsonConvert.DeserializeObject<List<Customer>>(response);
+    }
+}

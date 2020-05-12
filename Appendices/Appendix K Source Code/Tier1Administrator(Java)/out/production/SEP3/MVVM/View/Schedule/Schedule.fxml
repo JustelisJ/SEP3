@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="Plastic" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVVM.View.Schedule.ScheduleView">
+   <children>
+      <DatePicker fx:id="Date" layoutX="24.0" layoutY="46.0" promptText="Pick a date" />
+      <Button layoutX="246.0" layoutY="318.0" mnemonicParsing="false" onAction="#addNewDate" text="Save" />
+      <ComboBox fx:id="area" layoutX="24.0" layoutY="141.0" prefWidth="150.0" promptText="Select a City" />
+      <ComboBox fx:id="city" layoutX="24.0" layoutY="226.0" prefHeight="28.0" prefWidth="150.0" promptText="Select Area" />
+      <ListView layoutX="325.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" />
+      <RadioButton fx:id="plastic" layoutX="273.0" layoutY="44.0" mnemonicParsing="false" text="Plastic" />
+      <RadioButton fx:id="biological" layoutX="398.0" layoutY="44.0" mnemonicParsing="false" text="Biological" />
+   </children>
+</AnchorPane>

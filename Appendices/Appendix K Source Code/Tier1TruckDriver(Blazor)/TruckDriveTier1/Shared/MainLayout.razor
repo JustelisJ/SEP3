@@ -1,0 +1,38 @@
+﻿@using Data
+@inherits LayoutComponentBase
+@inject LoggedIn login
+@inject NavigationManager NavigationManager
+
+<div class="sidebar">
+    <NavMenu />
+</div>
+
+<div class="main">
+    <div class="top-row px-4">
+
+        @if (login.loggedIn)
+        {
+            <a href="" target="_self" @onclick="logout">Log Out</a>
+        }
+        else
+        {
+            <a href="/login" target="_self">Log in</a>
+        }
+
+        <a>@_areaNo.Day/@_areaNo.Month/@_areaNo.Year</a>
+    </div>
+
+    <div class="content px-4">
+        @Body
+    </div>
+</div>
+
+@code{
+    private DateTime _areaNo = DateTime.Today;
+
+    private void logout()
+    {
+        login.loggedIn = false;
+        this.StateHasChanged();
+    }
+}

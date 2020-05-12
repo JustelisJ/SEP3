@@ -1,0 +1,71 @@
+﻿@page "/login"
+@using TruckDriveTier1
+@using System.Security.Cryptography
+@using System.Text
+@using Data
+@using Newtonsoft.Json
+@inject SClient client
+@inject LoggedIn logged
+@inject NavigationManager NavigationManager
+
+<div class="htmlDiv">
+    <div class="loginBody">
+        <div class="login">
+            <h1>Login</h1>
+            <input type="text" name="u" placeholder="Username" required="required" @bind="username" />
+            <input type="password" name="p" placeholder="Password" required="required" @bind="password" />
+            <button class="btn btnLogin-primary btnLogin-block btnLogin-large" @onclick="login">Login</button>
+            <p>@error</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@code {
+    private string username = "";
+    private string password = "";
+    private string error = "";
+
+    private void login()
+    {
+        if (!username.Equals("") && !password.Equals(""))
+        {
+            string passHash = GetHashString(password);
+            Request request = new Request() { requestType = "GET", requestInformation = "login", requestContent = $"{username},{passHash}" };
+            string json = JsonConvert.SerializeObject(request);
+            client.Send(json);
+            string response = client.Recive();
+            if (response.Equals("true"))
+            {
+                logged.loggedIn = true;
+                error = "Logged in";
+                NavigationManager.NavigateTo("");
+            }
+            else
+            {
+                if (response.Equals("false"))
+                {
+                    error = "Incorrect username or password";
+                }
+            }
+        }
+    }
+
+    public static byte[] GetHash(string inputString)
+    {
+        HashAlgorithm algorithm = SHA256.Create();
+        return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+    }
+
+    public static string GetHashString(string inputString)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (byte b in GetHash(inputString))
+            sb.Append(b.ToString("X2"));
+        return sb.ToString();
+    }
+}
+

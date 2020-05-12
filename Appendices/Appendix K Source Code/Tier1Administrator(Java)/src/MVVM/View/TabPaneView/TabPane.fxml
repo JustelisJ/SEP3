@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+
+<TabPane fx:id="mainTabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="676.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVVM.View.TabPaneView.TabPaneView">
+  <tabs>
+    <Tab fx:id="displayTab" text="Display Customers">
+      <content>
+        <fx:include fx:id="displayView" source="../Display/Display.fxml" />
+      </content>
+    </Tab>
+      <Tab fx:id="createCustomerTab" text="Create new Customer">
+        <content>
+          <fx:include fx:id="createCustomer" source="../NewCustomer/NewCustomer.fxml" />
+        </content>
+      </Tab>
+      <Tab fx:id="displayEmployeeTab" text="Display Employees">
+        <content>
+          <fx:include fx:id="displayEmployees" source="../Employee/Employee.fxml" />
+        </content>
+      </Tab>
+      <Tab fx:id="createEmployeeTab" text="Create new Employee">
+        <content>
+          <fx:include fx:id="createEmployee" source="../Employee/NewEmployee.fxml" />
+        </content>
+      </Tab>
+      <Tab fx:id="createScheduleTab" text="Create a Schedule">
+        <content>
+          <fx:include fx:id="createSchedule" source="../Schedule/Schedule.fxml" />
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
